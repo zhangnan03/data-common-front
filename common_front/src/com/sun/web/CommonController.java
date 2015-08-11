@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sun.base.web.BaseController;
-import com.sun.entity.Member;
-import com.sun.service.MemberService;
+import com.sun.entity.User;
+import com.sun.service.UserService;
 
 @Controller
 public class CommonController extends BaseController {
 	@Autowired
-	private MemberService memberService;
+	private UserService userService;
 	private static Logger logger = LoggerFactory.getLogger(CommonController.class);
 	/**
 	 * 登录页面
@@ -25,7 +25,7 @@ public class CommonController extends BaseController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(HttpServletRequest request, ModelMap model) {
 		logger.info("首页");
-		Member member = memberService.findByUserName("zhangnan");
+		User member = userService.findByUserName("zhangnan");
 		System.out.println(member.getUserName());
 		return "/index";
 	}
